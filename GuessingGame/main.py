@@ -1,12 +1,15 @@
 import random
 
-def is_status(x, key):
+def is_status(x, key, dep):
     if x == key:
         return True
     if x < key:
-        print("Число слишком мало, возьмите больше.")
+        dep[0] = x
+        print("Число слишком мало, возьмите больше",
+              dep)
     if x > key:
-        print("Число большое, берите меньше.")
+        dep[1] = x
+        print("Число большое, берите меньше", dep)
 
 
 print("Добро пожаловать в игру 'Угадай число', начнем играть!")
@@ -20,10 +23,11 @@ while True:
     if case == '1':
         print("Игра началась, угадывайте число!")
         score = 0
+        Deaposon = [1, 100]
         key = random.randint(1, 100)
         x = int(input("Введите свое число: "))
         score += 1
-        while is_status(x, key) != True:
+        while is_status(x, key, Deaposon) != True:
             x = int(input("Введите свое число: "))
             score += 1
         print("You win!\nYour Score:", score)
