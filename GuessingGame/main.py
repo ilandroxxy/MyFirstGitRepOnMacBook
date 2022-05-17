@@ -10,12 +10,16 @@ def is_status(x, key):
 
 
 print("Добро пожаловать в игру 'Угадай число', начнем играть!")
+print("\ncase 1: Start game\ncase 0: Exit game\n")
+case = input("case: ")
 
 while True:
-    print("\ncase 1: Start game\ncase 2: Restart game\ncase 0: Exit game\n")
-    case = input("case: ")
+
+    if case == '2':
+        case = '1'
 
     if case == '1':
+        print("Игра началась, угадывайте число!")
         key = random.randint(1, 100)
         x = int(input("Введите свое число: "))
         while is_status(x, key) != True:
@@ -23,9 +27,9 @@ while True:
         print("You win!")
 
 
-    if case == '2':
-        pass
-
     if case == '0':
         print("Спасибо за проведенную игру, Bye!")
         break
+
+    print("\ncase 2: Restart game\ncase 0: Exit game\n")
+    case = input("case: ")
