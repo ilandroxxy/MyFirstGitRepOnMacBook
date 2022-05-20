@@ -1,4 +1,5 @@
 import random
+import time
 
 def is_status(x, key, dep):
     if x == key:
@@ -10,6 +11,8 @@ def is_status(x, key, dep):
     if x > key:
         dep[1] = x
         print("Число большое, берите меньше", dep)
+
+Result = []
 
 
 print("Добро пожаловать в игру 'Угадай число', начнем играть!")
@@ -31,11 +34,17 @@ while True:
             x = int(input("Введите свое число: "))
             score += 1
         print("You win!\nYour Score:", score)
+        s = 'score: ' + str(score) + '   ' + time.ctime()
+        Result.append(s)
+
+    if case == '3':
+        for i in range(0, len(Result)):
+            print(str(i + 1) + ') ', Result[i])
 
 
     if case == '0':
         print("Спасибо за проведенную игру, Bye!")
         break
 
-    print("\ncase 2: Restart game\ncase 0: Exit game\n")
+    print("\ncase 2: Restart game\ncase 3: Show the results table\ncase 0: Exit game\n")
     case = input("case: ")
